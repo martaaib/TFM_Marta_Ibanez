@@ -1,0 +1,35 @@
+#!/bin/bash
+
+##This is a good exemple of a single-process multi-threaded job
+
+#SBATCH -p regular 		# partition name
+#SBATCH -c 8 		# number of cores or threads requested -- this needs to be greater than or equal to the number of cores/threads you plan to use to run your job
+#SBATCH --job-name trimmomatic-demo01 		# Job name
+#SBATCH -o %j.out			# File to which standard out will be written
+#SBATCH -e %j.err 		# File to which standard err will be written
+#SBATCH -t 01:30:00 # Run time (hh:mm:ss) - 1.5 hours
+#SBATCH --mem 40G
+
+## Changing directories to where the fastq files are located
+cd /cscratch/mibanez/fastq_files
+
+##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+module load Trimmomatic
+
+##Create results subdirdirectory
+mkdir -p ./results/trimmomatic/
+
+##Create logs directory
+mkdir -p ./logs/trimmomatic/
+
+## set fastq files to be used 
+R1=./*R1_001.fastq.gz
+R2=./*R2_001.fastq.gz
+
+
+##set environment variable for removing overrepresented command line expression
+export TRMPECLP="ILLUMINACLIP:overrepresented.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36" 
+
+##trimmomatic command line
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -threads 8 -trimlog ./logs/trimmomatic/trimmomatic.${SLURM_JOB_ID}.log $R1 $R2 -baseout ./results/trimmomatic/output_trimmomatic.fastq.gz $TRMPECLP
+

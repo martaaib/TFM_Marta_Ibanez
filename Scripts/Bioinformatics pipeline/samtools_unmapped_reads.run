@@ -1,0 +1,34 @@
+#!/bin/bash
+
+##This is a good exemple of a single-process multi-threaded job
+
+#SBATCH -p regular 		# partition name
+#SBATCH -c 8 		# number of cores or threads requested -- this needs to be greater than or equal to the number of cores/threads you plan to use to run your job
+#SBATCH --job-name samtools-map2 		# Job name
+#SBATCH -o %j.out			# File to which standard out will be written
+#SBATCH -e %j.err 		# File to which standard err will be written
+##SBATCH -t 01:30:00 # Run time (hh:mm:ss) - 1.5 hours
+#SBATCH --mem 30G
+
+## Changing directories to where the fastq files are located
+##cd /cscratch/mibanez/results/bowtie2-mapCP/
+##cd /cscratch/mibanez/results/bowtie2-mapCQ/
+##cd /cscratch/mibanez/results/bowtie2-mapHS/
+cd /cscratch/mibanez/11_L1/
+
+##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+module load SAMtools
+
+##Create results subdir
+##mkdir -p ./samtools-MAP/unmapped_readsS1
+
+## Define variables
+in=output_GA.bam
+out=unmap_GA.bam
+
+##samtools command line
+samtools view -@ 2 -b -f 12 -F 256 $in > $out
+##samtools view -@ 2 -b -f 12 -F 256 output.bam > unmap.bam
+##samtools view -@ 2 -b -f 12 -F 256 output_GA.bam  > unmapGA.bam
+
+

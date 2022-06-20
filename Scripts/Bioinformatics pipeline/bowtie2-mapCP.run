@@ -1,0 +1,32 @@
+#!/bin/bash
+
+##This is a good exemple of a single-process multi-threaded job
+
+#SBATCH -p regular 		# partition name
+#SBATCH -c 8 		# number of cores or threads requested -- this needs to be greater than or equal to the number of cores/threads you plan to use to run your job
+#SBATCH --job-name bowtie2-map1 		# Job name
+#SBATCH -o %j.out			# File to which standard out will be written
+#SBATCH -e %j.err 		# File to which standard err will be written
+#SBATCH --mem 20G
+
+## Changing directories to where the fastq files are located
+cd /cscratch/mibanez/
+
+##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+module load Bowtie2
+
+##Create results subdir
+##mkdir -p ./4_L1/results/bowtie2-mapCP/
+
+##Set files for running command
+R1=./5_L1/*1P.fastq.gz
+R2=./5_L1/*2P.fastq.gz
+##R1=./6_L1/R1*
+##R2=./6_L1/R2*
+output=output_CP
+
+##bowtie2 command line
+bowtie2 --very-sensitive-local --threads 8 --reorder --seed 4 -x ./results/bowtie2-build-demo01/culex_pipens -1 $R1  -2 $R2 -S ./5_L1/${output}.sam
+
+
+

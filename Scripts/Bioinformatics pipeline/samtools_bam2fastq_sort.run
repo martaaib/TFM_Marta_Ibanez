@@ -1,0 +1,37 @@
+#!/bin/bash
+
+##This is a good exemple of a single-process multi-threaded job
+
+#SBATCH -p regular 		# partition name
+#SBATCH -c 8 		# number of cores or threads requested -- this needs to be greater than or equal to the number of cores/threads you plan to use to run your job
+#SBATCH --job-name samtools-bam2fastq-SORT 		# Job name
+#SBATCH -o %j.out			# File to which standard out will be written
+#SBATCH -e %j.err 		# File to which standard err will be written
+##SBATCH -t 01:30:00 # Run time (hh:mm:ss) - 1.5 hours
+#SBATCH --mem 40G
+
+## Changing directories to where the fastq files are located
+##cd /cscratch/mibanez/results/bowtie2-mapCP/samtools-MAP/unmapped_readsS1
+##cd /cscratch/mibanez/results/bowtie2-mapCQ
+##cd /cscratch/mibanez/results/bowtie2-mapHS
+cd /cscratch/mibanez/11_L1/
+
+##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+module load SAMtools
+
+
+## Define files
+in=unmap_GA.bam
+out=11_sorted.bam
+
+
+##samtools command line
+## Culex Pipens
+samtools sort -n $in -o $out
+## Culex Quinquefasciatus
+##samtools sort -n unmap.bam -o 1_L1_sorted2.bam
+## Homo Sapiens
+##samtools sort -n unmap1_L1_HS.bam -o 1_L1_sortedHS.bam
+## Gambusia Affinis
+##samtools sort -n unmapGA.bam -o 7_L7_sortedGA.bam
+

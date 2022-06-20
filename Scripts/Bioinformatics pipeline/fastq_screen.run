@@ -1,0 +1,36 @@
+#!/bin/bash
+
+##This is a good exemple of a single-process multi-threaded job
+
+#SBATCH -p regular 		# partition name
+#SBATCH -c 8 		# number of cores or threads requested -- this needs to be greater than or equal to the number of cores/threads you plan to use to run your job
+#SBATCH --job-name fastq_screen 		# Job name
+#SBATCH -o %j.out			# File to which standard out will be written
+#SBATCH -e %j.err 		# File to which standard err will be written
+#SBATCH --mem 20G
+
+## Changing directories to where the fastq files are located
+cd /cscratch/mibanez
+
+##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+module load FastQ_Screen/0.14.1-foss-2019b
+module load Bowtie2/2.3.5.1-GCC-8.3.0
+
+##Create results subdir
+mkdir -p ./6_L1/fastq_screen/
+
+## Set configuration file - Mosquito
+config=fastq_screen.conf
+
+## Set files for analysis
+fastq=./6_L1/*join.fastq.gz
+##fastq2=*2P.fastq.gz
+
+## Set configuration file - Fish
+##config=fastq_screenGA.conf
+
+##fastq-screen command line
+fastq_screen -conf $config $fastq
+
+
+
