@@ -13,5 +13,7 @@ Universitat Autònoma de Barcelona (UAB) and Vall d'Hebron Institut de Recerca (
 Information about repository and folders content.
 
 ## Scripts ##
-| Script file | Description | Additional information |
-| ----------------------------- | ----------------------- | --------- |
+### Bioinformatics pipeline ###
+| Script file | Description | 
+| ----------------------------- | ----------------------- | 
+trimmomatic.run | Script used to remove low quality, short reads and overrepresented sequences from fastQ files. | 
