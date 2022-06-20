@@ -10,20 +10,18 @@
 #SBATCH --mem 40G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading Bowtie2 module (check 'module spider fastqc to get the exact module name to load)
 module load Bowtie2
 
-##Create results subdir
-##mkdir -p ./8_L1/results/bowtie2-mapGA/
 
-## set files for running command
+## set fastq files to run command
 R1=./11_L1/R1*
 R2=./11_L1/R2*
 out=./11_L1/output_GA.sam
 
-##bowtie2 command line
+##bowtie2 command line to map reads against G. affinis genome.
 bowtie2 --very-sensitive-local --threads 8 --reorder --seed 4 -x ./results/bowtie2-build-GA/gambusia_affinis -1 $R1 -2 $R2 -S $out
 
 

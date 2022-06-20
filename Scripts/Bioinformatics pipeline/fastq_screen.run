@@ -10,24 +10,25 @@
 #SBATCH --mem 20G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading fastQ-screen and Bowtie2 module (check 'module spider fastqc to get the exact module name to load)
 module load FastQ_Screen/0.14.1-foss-2019b
 module load Bowtie2/2.3.5.1-GCC-8.3.0
 
 ##Create results subdir
-mkdir -p ./6_L1/fastq_screen/
+mkdir -p ./sample/fastq_screen/
 
+
+## Choose one of the main configuration files
 ## Set configuration file - Mosquito
 config=fastq_screen.conf
 
 ## Set files for analysis
-fastq=./6_L1/*join.fastq.gz
-##fastq2=*2P.fastq.gz
+fastq=./sample/*join.fastq.gz
 
 ## Set configuration file - Fish
-##config=fastq_screenGA.conf
+config=fastq_screenGA.conf
 
 ##fastq-screen command line
 fastq_screen -conf $config $fastq

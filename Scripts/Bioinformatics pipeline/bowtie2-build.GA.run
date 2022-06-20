@@ -11,15 +11,15 @@
 #SBATCH --mem 60G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez
+cd /cscratch/fastq_files
 
 ##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
 module load Bowtie2
 
-##Create results subdir
+##Create results subdirectory
 mkdir -p ./results/bowtie2-build-GA/
 
-##fastqc command line
+##bowtie2 command line with G. affinis fna genome file
 bowtie2-build --threads 8 --seed 4 GCF_019740435.1_SWU_Gaff_1.0_genomic.fna.gz ./results/bowtie2-build-GA/gambusia_affinis
 
 

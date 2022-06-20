@@ -10,23 +10,19 @@
 #SBATCH --mem 20G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez/
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading Bowtie2 module (check 'module spider fastqc to get the exact module name to load)
 module load Bowtie2
 
-##Create results subdir
-##mkdir -p ./4_L1/results/bowtie2-mapCP/
-
-##Set files for running command
-R1=./5_L1/*1P.fastq.gz
-R2=./5_L1/*2P.fastq.gz
-##R1=./6_L1/R1*
-##R2=./6_L1/R2*
+##Set fastq files that will be used to run the command
+R1=/*1P.fastq.gz
+R2=/*2P.fastq.gz
+## set output file name
 output=output_CP
 
-##bowtie2 command line
-bowtie2 --very-sensitive-local --threads 8 --reorder --seed 4 -x ./results/bowtie2-build-demo01/culex_pipens -1 $R1  -2 $R2 -S ./5_L1/${output}.sam
+##bowtie2 command line to map reads against C. pipiens database
+bowtie2 --very-sensitive-local --threads 8 --reorder --seed 4 -x ./results/bowtie2-build-demo01/culex_pipiens -1 $R1  -2 $R2 -S ./5_L1/${output}.sam
 
 
 

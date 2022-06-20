@@ -10,21 +10,21 @@
 #SBATCH --mem 60G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading Bowtie2 module (check 'module spider fastqc to get the exact module name to load)
 module load Bowtie2
 
-##Create results subdir
-##mkdir -p ./results/bowtie2-mapHS
 
-## Set files to use as variables
-in1=./5_L1/5_R1_unmap_CQ.fastq.gz
-in2=./5_L1/5_R2_unmap_CQ.fastq.gz
-out=./5_L1/output_HS.sam
+## Set fastq files to use as variables
+in1=./*_R1_unmap_CQ.fastq.gz
+in2=./*_R2_unmap_CQ.fastq.gz
+
+## Set name of output file
+out=./output_HS.sam
 
 
-##bowtie2 command line
+##bowtie2 command line to map reads against human genome.
 bowtie2 --very-sensitive-local --threads 8 --reorder --seed 4 -x ./results/bowtie2-build-HS/Homo_sapiens -1 $in1  -2 $in2 -S $out
 
 

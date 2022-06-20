@@ -11,21 +11,18 @@
 #SBATCH --mem 40G
 
 ## Changing directories to where the fastq files are located
-##cd /cscratch/mibanez/results/
-##cd /cscratch/mibanez/results/bowtie2-mapHS
-cd /cscratch/mibanez/11_L1/
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading SAMtools module (check 'module spider fastqc to get the exact module name to load)
 module load SAMtools
 
-##Create results subdir
-##mkdir -p unmapped_fastq2
+
 
 ## Set files to be used with command
-in=11_sorted.bam
-out1=11_R1_unmap_def.fastq.gz
-out2=11_R2_unmap_def.fastq.gz
+in=/*_sorted.bam
+out1=/*_R1_unmap_def.fastq.gz
+out2=/*_R2_unmap_def.fastq.gz
 
-##samtools command line
+##samtools command line to transform bam file to separated fastq files.
 samtools fastq -@ 8 $in -1 $out1 -2 $out2 
 

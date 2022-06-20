@@ -11,15 +11,15 @@
 #SBATCH --mem 60G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading bowtie2 module 
 module load Bowtie2
 
-##Create results subdir
+##Create results subdirectory
 mkdir -p ./results/bowtie2-build-CQ/
 
-##fastqc command line
+##bowtie2 command line with fna file from C. quinquefasciatus
 bowtie2-build --threads 8 --seed 4 GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.fna ./results/bowtie2-build-CQ/culex_quinquefasciatus
 
 

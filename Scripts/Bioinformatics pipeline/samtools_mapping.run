@@ -11,22 +11,17 @@
 #SBATCH --mem 16G
 
 ## Changing directories to where the fastq files are located
-cd /cscratch/mibanez/11_L1
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading SAMtools module (check 'module spider fastqc to get the exact module name to load)
 module load SAMtools
 
-##Create results subdir
-##mkdir -p ./samtools-MAP
 
-## set files to work with as variables
-in=output_GA.sam
-out=output_GA.bam
-
-
+## set input and output files to work with as variables
+in=output_*.sam
+out=output_*.bam
 
 ##samtools command line
 samtools view -@ 2 -bS $in > $out
-##samtools view -@ 2 -bS output_CQ1.sam > output.bam
-##samtools view -@ 2 -bS ./bowtie2-mapGA/output_GA.sam  > output_GA.bam
+
 

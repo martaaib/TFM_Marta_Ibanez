@@ -11,24 +11,18 @@
 #SBATCH --mem 30G
 
 ## Changing directories to where the fastq files are located
-##cd /cscratch/mibanez/results/bowtie2-mapCP/
-##cd /cscratch/mibanez/results/bowtie2-mapCQ/
-##cd /cscratch/mibanez/results/bowtie2-mapHS/
-cd /cscratch/mibanez/11_L1/
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading SAMtools module 
 module load SAMtools
 
-##Create results subdir
-##mkdir -p ./samtools-MAP/unmapped_readsS1
 
-## Define variables
-in=output_GA.bam
-out=unmap_GA.bam
+## Define input and output files as  variables
+in=output_*.bam
+out=unmap_*.bam
 
 ##samtools command line
 samtools view -@ 2 -b -f 12 -F 256 $in > $out
-##samtools view -@ 2 -b -f 12 -F 256 output.bam > unmap.bam
-##samtools view -@ 2 -b -f 12 -F 256 output_GA.bam  > unmapGA.bam
+
 
 

@@ -11,27 +11,18 @@
 #SBATCH --mem 40G
 
 ## Changing directories to where the fastq files are located
-##cd /cscratch/mibanez/results/bowtie2-mapCP/samtools-MAP/unmapped_readsS1
-##cd /cscratch/mibanez/results/bowtie2-mapCQ
-##cd /cscratch/mibanez/results/bowtie2-mapHS
-cd /cscratch/mibanez/11_L1/
+cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading SAMtools module 
 module load SAMtools
 
 
-## Define files
-in=unmap_GA.bam
-out=11_sorted.bam
+## Define input and output files
+in=unmap_*.bam
+out=*_sorted.bam
 
 
-##samtools command line
-## Culex Pipens
+##samtools command line to sort bam file
 samtools sort -n $in -o $out
-## Culex Quinquefasciatus
-##samtools sort -n unmap.bam -o 1_L1_sorted2.bam
-## Homo Sapiens
-##samtools sort -n unmap1_L1_HS.bam -o 1_L1_sortedHS.bam
-## Gambusia Affinis
-##samtools sort -n unmapGA.bam -o 7_L7_sortedGA.bam
+
 
