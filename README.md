@@ -17,6 +17,7 @@ Information about repository and folders content.
 | Script file | Description | 
 | ----------------------------- | ----------------------- | 
 trimmomatic.run | Script used to remove low quality, short reads and overrepresented sequences from fastQ files. | 
+bowtie2-build.CP.run | Script used to build C. pipens bowtie2 database. |
 bowtie2-build.CQ.run | Script used to build C. quinquefasciatus bowtie2 database. | 
 bowtie2-build.GA.run | Script used to build G. affinis bowtie2 database. |
 bowtie2-mapCP.run | Script used to map reads to C. pipiens bowtie2 database . |

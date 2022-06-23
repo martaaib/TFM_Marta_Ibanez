@@ -13,7 +13,7 @@
 ## Changing directories to where the fastq files are located
 cd /cscratch/fastq_files
 
-##loading fastqc module (check 'module spider fastqc to get the exact module name to load)
+##loading bowtie2 module (check 'module spider fastqc to get the exact module name to load)
 module load Bowtie2
 
 ##Create results subdirectory

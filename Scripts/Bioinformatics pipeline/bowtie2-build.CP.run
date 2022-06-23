@@ -4,27 +4,23 @@
 
 #SBATCH -p regular 		# partition name
 #SBATCH -c 8 		# number of cores or threads requested -- this needs to be greater than or equal to the number of cores/threads you plan to use to run your job
-#SBATCH --job-name bowtie2-map2 		# Job name
+#SBATCH --job-name bowtie2-build-demo 		# Job name
 #SBATCH -o %j.out			# File to which standard out will be written
 #SBATCH -e %j.err 		# File to which standard err will be written
+##SBATCH -t 01:30:00 # Run time (hh:mm:ss) - 1.5 hours
 #SBATCH --mem 60G
 
 ## Changing directories to where the fastq files are located
 cd /cscratch/fastq_files
 
-##loading Bowtie2 module (check 'module spider fastqc to get the exact module name to load)
+##loading bowtie2 module (check 'module spider fastqc to get the exact module name to load)
 module load Bowtie2
 
+##Create results subdir
+mkdir -p ./results/bowtie2-build-demo01/
 
-## Set files as variables to be used in command
-in1=./*_R1_unmap_CP.fastq.gz
-in2=./*_R2_unmap_CP.fastq.gz
-## Set name of output file
-out=./output_CQ.sam
-
-
-##bowtie2 command line to map reads to C. quinquefasciatus genome database.
-bowtie2 --very-sensitive-local --threads 8 --reorder --seed 4 -x ./results/bowtie2-build-CQ/culex_quinquefasciatus -1 $in1  -2 $in2 -S $out
+##fastqc command line
+bowtie2-build --threads 8 --seed 4 GCF_016801865.1_TS_Cpip_V1_genomic.fna ./results/bowtie2-build-demo01/culex_pipens
 
 
 
