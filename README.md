@@ -14,6 +14,8 @@ Information about repository and folders content.
 
 ## Scripts ##
 ### Bioinformatics pipeline ###
+This folder contains all scripts used for the analysis of fastq files from metagenomics samples (Culex sp. & G. affinis)
+
 | Script file | Description | 
 | ----------------------------- | ----------------------- | 
 trimmomatic.run | Script used to remove low quality, short reads and overrepresented sequences from fastQ files. | 
@@ -31,3 +33,5 @@ samtools_bam2fastq_sort.run | Script used to sort bam file. |
 samtools_bam2fastq.run | Script used to transform bam file to separated forward and reverse fastQ files. |
 samtools_mapping.run | Script used to transform sam file to bam. |
 samtools_unmapped_reads.run | Script used to remove reads mapping to host genome. |
+
+## Interpretation of results ##
