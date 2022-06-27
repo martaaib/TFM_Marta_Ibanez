@@ -4,7 +4,7 @@
 
 ### Supervised by: Dr Josep Quer
 
-Universitat Autònoma de Barcelona (UAB) and Vall d'Hebron Institut de Recerca (VHIR). Grup Malalties Hepàtiques.
+Universitat Autònoma de Barcelona (UAB) and Vall d'Hebron Institut de Recerca (VHIR). Grup Malalties Hepàtiques-Hepatitis viral.
 
 ### More information: missing information and results in this repository will be kept private until the paper is published. 
 ## Repository content
