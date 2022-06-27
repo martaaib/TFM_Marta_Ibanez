@@ -14,7 +14,7 @@ Information about repository and folders content.
 
 ## Scripts ##
 ### Bioinformatics pipeline ###
-This folder contains all scripts used for the analysis of fastq files from metagenomics samples (Culex sp. & G. affinis)
+This folder contains all scripts used for the analysis of fastQ files from metagenomics samples (Culex sp. & G. affinis).
 
 | Script file | Description | 
 | ----------------------------- | ----------------------- | 
@@ -35,3 +35,8 @@ samtools_mapping.run | Script used to transform sam file to bam. |
 samtools_unmapped_reads.run | Script used to remove reads mapping to host genome. |
 
 ## Interpretation of results ##
+This folder contains all scripts used for analysis of results and making of graphs.
+
+| Script file | Description | 
+| ----------------------------- | ----------------------- | 
+kaiju_graphs.R | Script used to analyse results from kaiju of main metagenomic analysis from C. pipiens and G. affinis. | 
