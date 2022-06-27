@@ -22,6 +22,7 @@ trimmomatic.run | Script used to remove low quality, short reads and overreprese
 bowtie2-build.CP.run | Script used to build C. pipens bowtie2 database. |
 bowtie2-build.CQ.run | Script used to build C. quinquefasciatus bowtie2 database. | 
 bowtie2-build.GA.run | Script used to build G. affinis bowtie2 database. |
+bowtie2-buildHS.run | Script used to build human bowtie2 database. |
 bowtie2-mapCP.run | Script used to map reads to C. pipiens bowtie2 database . |
 bowtie2-mapCQ.run | Script used to map reads to C. quinquefasciatus bowtie2 database. |
 bowtie2-mapGA.run | Script used to map reads to G. affinis bowtie2 database. |
@@ -39,4 +40,7 @@ This folder contains all scripts used for analysis of results and making of grap
 
 | Script file | Description | 
 | ----------------------------- | ----------------------- | 
+kaiju_analysis.R | Script used to analyse results from kaiju of main metagenomic analysis from C. pipiens and G. affinis. | 
 kaiju_graphs.R | Script used to analyse results from kaiju of main metagenomic analysis from C. pipiens and G. affinis. | 
+QA_control.R | Script used to analyse results from from the sensitivity analysis. | 
+pipeline_graphs.R | Scripts used to make graphs to show effectiveness of the bioinformatics pipeline. |
